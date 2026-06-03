@@ -1,6 +1,5 @@
 // компонент-страница для to-do листа
 import { useState } from 'react'
-import { Header } from "../components/Header/Header"
 import { Form } from "../components/Form/Form"
 import { ToDoList } from "../components/ToDoList/ToDoList"
 import { ToDo } from "../models/todo-item"
@@ -38,7 +37,6 @@ export const ToDoListPage = () => {
         // <React.Fragment> принято сокращать до <>
         // все части вёрстки - в отдельных компонентах, страницы собираются, как конструктор
         <>
-            <Header />
             <Form createNewToDo={createNewToDo} />
             <ToDoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo} />
         </>
