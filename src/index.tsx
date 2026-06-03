@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom/client';
 import './assets/scss/normalize.scss';
 import './assets/scss/style.scss';
 import { ToDoListPage } from './pages/ToDoListPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
-import { Header } from './components/Header/Header';
 import { ToDo } from './models/todo-item';
 import { NotFound } from './pages/404';
 import { ItemDescription } from './pages/ItemDescription';
+import { Layout } from './layouts/Layout';
 
 // массив с тестовыми данными
 const todos: ToDo[] = [
@@ -36,6 +36,32 @@ const todos: ToDo[] = [
   }
 ]
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage todos={todos} />
+      },
+      {
+        path: '/todo',
+        element: <ToDoListPage />
+      },
+      {
+        path: '/list/:id',
+        element: <ItemDescription todos={todos} />
+      }
+    ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
+  }
+], { basename: '/app/' })
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -43,14 +69,6 @@ root.render(
   // компоненты - функции, которые возвращают вместо себя блок вёрстки
   // React.StrictMode реализует стиль разработки в строгом режиме
   <React.StrictMode>
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<HomePage todos={todos}/>}></Route>
-        <Route path='/list/:id' element={<ItemDescription todos={todos}/>}></Route>
-        <Route path='/todo' element={<ToDoListPage />}></Route>
-        <Route path='*' element={<NotFound />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
