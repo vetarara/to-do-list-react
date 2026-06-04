@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import todoReducer from './feature/todoList'
+import inputReducer from './feature/inputSlice'
 import { loadFromLocalStorage, saveToLocalStorage } from './helpers/storage'
 
 export const store = configureStore({
   // собирает все возможные состояния приложения и выдаёт их одним завершённым объектом
   reducer: {
-    todoList: todoReducer
+    todoList: todoReducer,
+    input: inputReducer
   },
   preloadedState: loadFromLocalStorage()
 })

@@ -5,14 +5,19 @@ import { ToDo } from "../models/todo-item"
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store'
 import { createAction, deleteAction, updateAction } from '../feature/todoList'
+import { clearInput } from '../feature/inputSlice'
 
 
 export const ToDoListPage = () => {
     const todoList = useSelector((state: RootState) => state.todoList.todos)
+    const inputValue = useSelector((state: RootState) => state.input.value)
     const dispatch = useDispatch()
 
-    const createNewToDo = (text: string) => {
-        dispatch(createAction(text))
+    const createNewToDo = () => {
+        if (inputValue) {
+            dispatch(createAction(inputValue))
+            dispatch(clearInput())
+        }
     }
 
     const updateToDo = (toDoItem: ToDo) => {

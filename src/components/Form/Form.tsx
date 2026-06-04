@@ -1,18 +1,15 @@
-import { useState } from  'react'
+import { useSelector, useDispatch } from 'react-redux'
 import './Form.scss'
-
+import { RootState } from '../../store'
+import { setInput } from '../../feature/inputSlice'
 
 export const Form = (props: { createNewToDo: Function }) => {
-    // useState - хранилище состояния и управления им
-    const [text, setText] = useState<string>('')
+    const dispatch = useDispatch()
+    const text = useSelector((state: RootState) => state.input.value)
 
-    // ToDo добавляется, только если есть текст
     const formSubmit = (event: React.SyntheticEvent) => {
         event.preventDefault()
-        if (text) {
-            props.createNewToDo(text)
-            setText('')
-        }        
+        props.createNewToDo()
     }
 
     return (
@@ -22,7 +19,7 @@ export const Form = (props: { createNewToDo: Function }) => {
                     <input 
                         value={text} 
                         type="text" 
-                        onChange={(e) => setText(e.target.value)}
+                        onChange={(e) => dispatch(setInput(e.target.value))}
                     />
                     <button></button>
                 </label>
