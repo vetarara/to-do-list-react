@@ -2,6 +2,7 @@
   "name": "to-do-list",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vetarara.github.io/to-do-list-react",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.17.0",
@@ -24,13 +25,16 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.36",
+    "gh-pages": "^6.3.0",
     "sass": "^1.66.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
