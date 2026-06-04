@@ -13,6 +13,7 @@ position: fixed;
 `
 
 export const PageHeaderWrapper = styled.div`
+    position: relative;
     max-width: 97%;
     width: 100%;
     margin: 0 auto;
@@ -33,4 +34,18 @@ export const StyledNavLink = styled(NavLink)`
     &.active {
         color: #ffffff33;
     }
+`
+
+export const ToggleThemeButton = styled.button`
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    min-width: 40px;
+    max-height: 40px;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 `
