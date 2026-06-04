@@ -1,5 +1,4 @@
 import { ToDo } from "../../models/todo-item"
-import { Link } from "react-router-dom"
 import { ListItemLink } from "./ListItem.styled"
 
 export const ListItem = ({todo}: { todo: ToDo }) => {
