@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { ToDo } from "../models/todo-item"
 import { useNavigate, useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { RootState } from "../store"
 
-interface ComponentProps {
-    todos: ToDo[]
-}
+export const ViewListItem = () => {
+    const todoList = useSelector((state: RootState) => state.todoList.todos)
 
-export const ItemDescription = ({ todos }: ComponentProps) => {
     // useParams достаёт динамические параметры, например, из bp Route path='/list/:id' из index.tsx
     const { id } = useParams()
     // useNavigate переводит страницу на другой url
@@ -15,14 +15,14 @@ export const ItemDescription = ({ todos }: ComponentProps) => {
 
     // useEffect объединяет все возможные жизненные циклы компонентов
     useEffect(() => {
-        const searchTodo = todos.find((todo) => String(todo.id) === id)
+        const searchTodo = todoList.find((todo) => String(todo.id) === id)
 
         if (searchTodo) {
             setTodo(searchTodo)
         } else {
             navigate('/404')
         }
-    }, [todos, id, navigate])
+    }, [todoList, id, navigate])
 
     return (
         <div className="container">

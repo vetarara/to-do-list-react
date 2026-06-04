@@ -7,7 +7,8 @@ export const Form = (props: { createNewToDo: Function }) => {
     const [text, setText] = useState<string>('')
 
     // ToDo добавляется, только если есть текст
-    const formSubmit = () => {
+    const formSubmit = (event: React.SyntheticEvent) => {
+        event.preventDefault()
         if (text) {
             props.createNewToDo(text)
             setText('')

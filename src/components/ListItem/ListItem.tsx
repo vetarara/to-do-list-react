@@ -7,7 +7,7 @@ export const ListItem = ({todo}: { todo: ToDo }) => {
             className={`${classes.link} ${todo.isDone ? classes.done : classes.notDone } `}
             target="_blank"
             rel="noreferrer"
-            href={`/app/list/${todo.id}`}
+            href={`/list/${todo.id}`}
         >{todo.text}</a>
     )
 }
