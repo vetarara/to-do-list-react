@@ -1,20 +1,17 @@
-import { NavLink } from 'react-router-dom'
-import classes from './Header.module.scss'
+import { useDispatch } from 'react-redux'
+import { PageHeader, PageHeaderWrapper, StyledNavLink, ToggleThemeButton } from './Header.styled'
+import { toggleThemeAction } from '../../feature/themeList'
 
 export const Header = () => {
-const getActiveClass = ({ isActive }: { isActive: boolean }): string => {
-    return isActive ? `${classes.active} ${classes.link}` : classes.link
-}
+    const dispatch = useDispatch()
 
     return(
-        <header className={classes.header}>
-            <div className={classes.container}>
-                <NavLink 
-                    to={"/"} 
-                    // передаём функцию без её вызова. почему?
-                    className={getActiveClass}>ToDo</NavLink>
-                <NavLink to={"/list"} className={getActiveClass}>List</NavLink>
-            </div>
-        </header>
+        <PageHeader>
+            <PageHeaderWrapper>
+                <StyledNavLink to={"/"}>ToDo</StyledNavLink>
+                <StyledNavLink to={"/list"}>Список задач</StyledNavLink>
+                <ToggleThemeButton onClick={() => dispatch(toggleThemeAction())}>Изменить тему</ToggleThemeButton>
+            </PageHeaderWrapper>
+        </PageHeader>
     )
 }
