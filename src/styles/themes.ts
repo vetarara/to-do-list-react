@@ -4,7 +4,7 @@ const light: Theme = {
     name: 'light',
     colors: {
         backgroundPrimary: '#4682b4',
-        backgroundSecondary: 'rgb(237 240, 241)'
+        backgroundSecondary: '#edf0f1'
     }
 }
 
@@ -12,7 +12,7 @@ const dark: Theme = {
     name: 'dark',
     colors: {
         backgroundPrimary: 'black',
-        backgroundSecondary: 'grey'
+        backgroundSecondary: '#c0c0c0'
     }
 }
 

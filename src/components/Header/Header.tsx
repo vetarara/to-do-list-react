@@ -8,7 +8,7 @@ export const Header = () => {
     return(
         <PageHeader>
             <PageHeaderWrapper>
-                <StyledNavLink to={"/"}>ToDo</StyledNavLink>
+                <StyledNavLink to={"/"}>Редактор задач</StyledNavLink>
                 <StyledNavLink to={"/list"}>Список задач</StyledNavLink>
                 <ToggleThemeButton onClick={() => dispatch(toggleThemeAction())}>Изменить тему</ToggleThemeButton>
             </PageHeaderWrapper>

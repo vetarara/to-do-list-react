@@ -32,6 +32,20 @@ export const FormField = styled.input`
     border: 0;
     box-shadow: none;
     outline: none;
+
+    &:hover {
+        outline: 2px solid #1ba2e8;
+        box-shadow: 0 2px 6px #0b31a2;
+    }
+
+    &:focus-visible {
+        box-shadow: 0 2px 6px #000000;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
 `
 
 export const FormControl = styled.button<{ icon: string }>`
@@ -48,4 +62,20 @@ export const FormControl = styled.button<{ icon: string }>`
     box-shadow: none;
     outline: none;
     cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+        outline: 2px solid #1ba2e8;
+        box-shadow: 0 2px 6px #0b31a2;
+    }
+
+    &:active {
+        box-shadow: 0 2px 6px #000000;
+    }
+
+    &:disabled,
+    &[disabled] {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
 `

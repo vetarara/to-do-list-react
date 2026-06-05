@@ -3,25 +3,21 @@ import styled from 'styled-components'
 export const ToDoItem = styled.li`
     width: 100%;
     min-height: 50px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
-    color: #444;
+    color: #444444;
     line-height: 22px;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
-    background: #fff;
+    background: #ffffff;
     border-radius: 5px;
     position: relative;
     box-shadow: 0 1px 2px rgba(44, 62, 80, 0.10);
-    margin: 0 0 10px 0;
     padding: 14px;
     word-break: break-word;
-
-    &:last-child {
-        margin: 0;
-    }
 `
 
 export const ToDoItemText = styled.span``
@@ -31,9 +27,7 @@ export const ToDoItemControls = styled.div`
     height: 50px;
     display: flex;
 
-    position: absolute;
-    top: 0;
-    right: 0;
+    
 `
 
 export const ToDoItemControl = styled.button<{ icon: string }>`
@@ -49,14 +43,22 @@ export const ToDoItemControl = styled.button<{ icon: string }>`
     cursor: pointer;
     background-image: url(${(props) => props.icon});
 
-    &:last-of-type:before {
-        content: '';
-        width: 1px;
-        height: 30px;
-        background: #edf0f1;
+    &:hover,
+    &:focus-visible {
+        outline: 2px solid #1ba2e8;
+        box-shadow: 0 2px 6px #0b31a2;
+        color: #4682b4;
+        
+    }
 
-        position: absolute;
-        top: 10px;
-        left: 0;
+    &:active {
+        outline: 2px solid #1995d3;
+        box-shadow: 0 2px 6px #000000;
+    }
+
+    &:disabled,
+    &[disabled] {
+      opacity: 0.3;
+      cursor: not-allowed;
     }
 `

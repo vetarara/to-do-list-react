@@ -7,9 +7,12 @@ export const ToDoListContainer = styled.div`
 
 const BaseList = styled.ul`
     width: 100%;
-    margin: 20px 0;
+    margin: 0;
     padding-left: 0;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     &::after {
         width: 100%;
@@ -20,9 +23,14 @@ const BaseList = styled.ul`
     }
 `
 
-export const FailedList = styled(BaseList)`    
+export const FailedList = styled(BaseList)`
+    
     &:empty::after {
-        content: 'Нет задач на выполнение';
+        padding-top: 20px;
+        content: 'Нет предстоящих задач';
+        font-size: 16px;
+        font-weight: 500;
+        font-style: italic;
     }
 `
 
@@ -32,6 +40,9 @@ export const CompletedList = styled(BaseList)`
 
     &:empty::after {
         content: 'Нет выполненых задач';
+        font-size: 16px;
+        font-weight: 500;
+        font-style: italic;
     }
 
     &::before {
