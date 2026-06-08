@@ -21,7 +21,7 @@ export const PageHeaderWrapper = styled.div`
 
     @media (max-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 20px 10px;
 
     }
 `
@@ -50,8 +50,11 @@ export const StyledNavLink = styled(NavLink)`
     }
 
     &:nth-child(2) {
-    justify-self: end;
-    }
+        justify-self: center;
+
+        @media (max-width: 768px) {
+            justify-self: end;
+        }
 `
 
 export const ToggleThemeButton = styled.button`
@@ -60,6 +63,7 @@ export const ToggleThemeButton = styled.button`
     min-height: 40px;
     box-sizing: border-box;
     padding: 10px;
+    justify-self: end;
     text-align: center;
     border: none;
     border-radius: 4px;
@@ -79,12 +83,11 @@ export const ToggleThemeButton = styled.button`
 
     &:disabled,
     &[disabled] {
-      opacity: 0.3;
-      cursor: not-allowed;
+        opacity: 0.3;
+        cursor: not-allowed;
     }
 
     @media (max-width: 768px) {
-    grid-column: 2 / 3;
-    justify-self: end;
+        grid-column: 2 / 3;
     }
 `
