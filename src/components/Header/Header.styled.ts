@@ -13,19 +13,28 @@ export const PageHeaderWrapper = styled.div`
     max-width: 97%;
     width: 100%;
     margin: 0 auto;
-    display: flex;
+    padding: 0 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    justify-content: space-between;
+    gap: 15px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+
+    }
 `
 
 export const StyledNavLink = styled(NavLink)`
-    text-decoration: none;
+    width: fit-content;
     padding: 10px 5px;
     font-size: 18px;
     font-weight: 700;
     color: #ffffff;
     box-sizing:border-box;
     transition: background-color .2s;
+    text-decoration: none;
 
     &:hover,
     &:focus-visible {
@@ -39,11 +48,16 @@ export const StyledNavLink = styled(NavLink)`
     &.active {
         border-bottom: 2px solid #ffffff;
     }
+
+    &:nth-child(2) {
+    justify-self: end;
+    }
 `
 
 export const ToggleThemeButton = styled.button`
     min-width: 40px;
-    max-height: 40px;
+    width: fit-content;
+    min-height: 40px;
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
@@ -67,5 +81,10 @@ export const ToggleThemeButton = styled.button`
     &[disabled] {
       opacity: 0.3;
       cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+    grid-column: 2 / 3;
+    justify-self: end;
     }
 `
